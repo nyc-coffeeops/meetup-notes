@@ -27,7 +27,7 @@ fi
 
 # Get image (if there is one)
 #
-if [[ ! -n ${NEW_IMAGE_URL} ]]; then
+if [[ -z ${NEW_IMAGE_URL} ]]; then
     echo "No image"
 elif ! wget -O "/tmp/${NEW_DATE}.png" "${NEW_IMAGE_URL}" 2> /dev/null; then
     echo "Error downloading image"
