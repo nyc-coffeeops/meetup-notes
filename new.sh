@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# A helper script to make it easier to add records that were added in Pastebin.
+# Given a date in YYYY.MM.DD format, a pastebin link, and an option image link,
+# this will download all the components with the right name and file formats
+# and append the proper link to the the README.
+
 NEW_SYNTAX="./new.sh YYYY.MM.DD <pastebin-url> <image-url>"
 
 if (( $# == 2 || $# == 3 )); then
