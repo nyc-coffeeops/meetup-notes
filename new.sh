@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-
-
 NEW_SYNTAX="./new.sh YYYY.MM.DD <pastebin-url> <image-url>"
 
-if (( $# == 3 )); then
+if (( $# == 2 || $# == 3 )); then
     NEW_DATE=$1
     NEW_PASTEBIN_URL=$2
     NEW_IMAGE_URL=$3
@@ -22,10 +20,12 @@ else
     exit 1
 fi
 
-# Get image
+# Get image (if there is one)
 #
-if ! wget -O "/tmp/${NEW_DATE}.png" "${NEW_IMAGE_URL}" 2> /dev/null; then
-    echo "Error downloading raw Pastebin contents"
+if [[ ! -n ${NEW_IMAGE_URL} ]]; then
+    echo "No image"
+elif ! wget -O "/tmp/${NEW_DATE}.png" "${NEW_IMAGE_URL}" 2> /dev/null; then
+    echo "Error downloading image"
     exit 1
 fi
 
@@ -45,12 +45,13 @@ fi
 # If we got here, we have all the parts
 # Do the thing
 
-echo -e '![Our Board](images/'"${NEW_DATE}"'.png)\n' > "${NEW_DATE}.md"
+if [[ -n ${NEW_IMAGE_URL} ]]; then
+    mv "/tmp/${NEW_DATE}.png" images/
+    echo -e '![Our Board](images/'"${NEW_DATE}"'.png)\n' > "${NEW_DATE}.md"
+fi
 
 cat "/tmp/${NEW_DATE}.md" >> "${NEW_DATE}.md"
 rm "/tmp/${NEW_DATE}.md"
-
-mv "/tmp/${NEW_DATE}.png" images/
 
 echo "* [${NEW_HR_DATE}](${NEW_DATE}.md)" >> README.md
 
