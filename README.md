@@ -6,6 +6,7 @@ Some weeks aren't present because James wasn't available to take notes. Going fo
 
 Most recent dates are on top.
 
+* [15 October 2020](2020.10.15.md)
 * [08 October 2020](2020.10.08.md)
 * [01 October 2020](2020.10.01.md)
 * [24 September 2020](2020.09.24.md)
