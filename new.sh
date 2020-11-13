@@ -58,6 +58,9 @@ fi
 cat "/tmp/${NEW_DATE}.md" >> "${NEW_DATE}.md"
 rm "/tmp/${NEW_DATE}.md"
 
-echo "* [${NEW_HR_DATE}](${NEW_DATE}.md)" >> README.md
+grep -v '.md' README.md > /tmp/README.md
+echo "* [${NEW_HR_DATE}](${NEW_DATE}.md)" >> /tmp/README.md
+grep '.md' README.md >> /tmp/README.md
+mv /tmp/README.md README.md
 
 echo "Done!"
