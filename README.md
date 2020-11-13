@@ -44,3 +44,5 @@ Most recent dates are on top.
 * [16 January 2020](2020.01.16.md)
 * [09 January 2020](2020.01.09.md)
 * [02 January 2020](2020.01.02.md)
+* [05 November 2020](2020.11.05.md)
+* [12 November 2020](2020.11.12.md)
